@@ -102,7 +102,7 @@ $(function() {
   // Adds the visual chat typing message
   function addChatTyping (data) {
     data.typing = true;
-    data.message = 'is typing';
+    data.message = '正在輸入訊息';
     addChatMessage(data);
   }
 
@@ -239,6 +239,8 @@ $(function() {
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
     addChatMessage(data);
+    //替換文字
+    Effects();
   });
 
   // Whenever the server emits 'user joined', log it in the chat body
@@ -264,3 +266,21 @@ $(function() {
     removeChatTyping(data);
   });
 });
+
+function Effects(){
+  var contro = document.getElementsByClassName("messageBody")[document.getElementsByClassName("messageBody").length-1];
+        //link handle
+        if(contro.innerHTML.indexOf("link: ") != -1){
+          var url = contro.innerHTML.replace("link: ",'');
+          if(url.indexOf("http://") == -1){
+            url = 'http://'+url;
+          }
+          contro.innerHTML = '<a href="'+url+'" target="_blank">'+contro.innerHTML+'</a>';
+          contro.innerHTML = contro.innerHTML.replace("link: ",'');
+        }
+        if(contro.innerHTML.indexOf("http://www.youtube.com/") != -1){
+          var ges = '<iframe width="100%" height="420" src=" '+contro.innerHTML.replace("watch?v=","embed/").toString()+'" frameborder="0" allowfullscreen></iframe>';
+          contro.innerHTML = ges;
+          console.log(ges);
+        }
+}
