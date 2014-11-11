@@ -24,10 +24,11 @@
           contro.innerHTML = contro.innerHTML.replace("link: ",'');
         }
         if(contro.innerHTML.indexOf("http://www.youtube.com/") != -1){
-          var ges = '<iframe width="100%" height="420" src=" '+contro.innerHTML.replace("watch?v=","embed/").toString()+'" frameborder="0" allowfullscreen></iframe>';
+          var ges = '<iframe width="560" height="315" src=" '+contro.innerHTML.replace("watch?v=","embed/").toString()+'" frameborder="0" allowfullscreen></iframe>';
           contro.innerHTML = ges;
           console.log(ges);
         }
+        //document.getElementById("").addEventListener
       }
   </script>
 </head>

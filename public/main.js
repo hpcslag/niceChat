@@ -1,3 +1,41 @@
+/**
+* Custom Effects
+*/
+function Effects(){
+  var contro = document.getElementsByClassName("messageBody")[document.getElementsByClassName("messageBody").length-1];
+        //enter "link: http://xxxxx"
+        if(contro.innerHTML.indexOf("link: ") != -1){
+          var url = contro.innerHTML.replace("link: ",'');
+          if(url.indexOf("http://") == -1){
+            url = 'http://'+url;
+          }
+          contro.innerHTML = '<a href="'+url+'" target="_blank">'+contro.innerHTML+'</a>';
+          contro.innerHTML = contro.innerHTML.replace("link: ",'');
+        }
+        //enter Youtube Link, http + https
+        if(contro.innerHTML.indexOf("http://www.youtube.com/") != -1 || contro.innerHTML.indexOf("https://www.youtube.com/") != -1){
+          var ges = '<iframe width="560" height="315" src=" '+contro.innerHTML.replace("watch?v=","embed/").toString()+'" frameborder="0" allowfullscreen></iframe>';
+          contro.innerHTML = ges;
+          console.log(ges);
+        }
+        //enter soundcloud
+
+        //enter vimo
+
+        //enter tag: 
+
+        //enter color:
+
+        //enter h1: ,h2: ,h3: ,h4: ,h5: ,h6:
+
+        //enter Save to Firebase
+        http://www.codecademy.com/courses/javascript-beginner-en-EID4t/0/1?curriculum_id=5122e50456ef4d6c450008c1
+
+        //enter code:
+}
+/**
+* Chat Body:
+*/
 $(function() {
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
@@ -266,21 +304,3 @@ $(function() {
     removeChatTyping(data);
   });
 });
-
-function Effects(){
-  var contro = document.getElementsByClassName("messageBody")[document.getElementsByClassName("messageBody").length-1];
-        //link handle
-        if(contro.innerHTML.indexOf("link: ") != -1){
-          var url = contro.innerHTML.replace("link: ",'');
-          if(url.indexOf("http://") == -1){
-            url = 'http://'+url;
-          }
-          contro.innerHTML = '<a href="'+url+'" target="_blank">'+contro.innerHTML+'</a>';
-          contro.innerHTML = contro.innerHTML.replace("link: ",'');
-        }
-        if(contro.innerHTML.indexOf("http://www.youtube.com/") != -1){
-          var ges = '<iframe width="100%" height="420" src=" '+contro.innerHTML.replace("watch?v=","embed/").toString()+'" frameborder="0" allowfullscreen></iframe>';
-          contro.innerHTML = ges;
-          console.log(ges);
-        }
-}
